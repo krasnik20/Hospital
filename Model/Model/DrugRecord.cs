@@ -8,6 +8,6 @@ namespace Model
         public Drug Drug { get; set; }
         public TimeSpan Duration { get; set; }
         public string Instructions { get; set; }
-
+        public Treatment Treatment { get; set; }
     }
 }
