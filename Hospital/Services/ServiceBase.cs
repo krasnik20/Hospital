@@ -2,7 +2,7 @@
 
 namespace Hospital.Services
 {
-    public abstract class ServiceBase<T> where T : class
+    public class ServiceBase<T> where T : class
     {
         protected readonly ApplicationContext dbctx;
         public ServiceBase()
