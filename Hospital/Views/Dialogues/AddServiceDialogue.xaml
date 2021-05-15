@@ -1,0 +1,24 @@
+﻿<Window x:Class="Hospital.Views.Dialogues.AddServiceDialogue"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.Views.Dialogues"
+        mc:Ignorable="d"
+        Title="AddServiceDialogue" Height="500" Width="500">
+    <DockPanel LastChildFill="False" Margin="20">
+        <StackPanel DockPanel.Dock="Top">
+            <Label>Наименование услуги:</Label>
+            <TextBox HorizontalAlignment="Stretch"/>
+            <Label>Цена:</Label>
+            <TextBox HorizontalAlignment="Stretch"/>
+            <Label>Показания:</Label>
+            <DataGrid/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button Width="100">Сохранить</Button>
+            <Button Margin="20,0,0,0" Width="100">Отмена</Button>
+        </StackPanel>
+    </DockPanel>
+   
+</Window>
