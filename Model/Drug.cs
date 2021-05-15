@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Model
 {
-    class Drug
+    public class Drug
     {
-
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public List<Disease> Diseases { get; set; }
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Room
+    public class Room
     {
+        public int Id { get; set; }
+        public Doctor Doctor { get; set; }
+        public List<Patient> Patients { get; set; }
     }
 }
