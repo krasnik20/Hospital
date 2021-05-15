@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using Model.Model;
 
 namespace Hospital.ViewModels
 {

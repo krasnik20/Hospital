@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Model;
+using Model.Model;
 
 namespace Hospital.Services
 {
@@ -12,14 +12,23 @@ namespace Hospital.Services
         public DbSet<DrugRecord> DrugRecords { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
         public DbSet<Disease> Diseases { get; set; }
+        public DbSet<PatientDisease> PatientDiseases { get; set; }
         public ApplicationContext()
         {
+            //Database. EnsureDeleted();
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=hospitaldb;Trusted_Connection=True;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Patient>()
+                    .HasMany(p => p.Diagnosis)
+                    .WithOne(d => d.Patient);
         }
     }
 }

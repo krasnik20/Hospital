@@ -1,36 +1,68 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace Hospital.Services
 {
-    public class ServiceBase<T> where T : class
+    public class ServiceBase<T> : ICRUD<T> where T : class
     {
-        protected readonly ApplicationContext dbctx;
+        protected ApplicationContext dbctx;
+        protected Action<T[]> AfterRead;
         public ServiceBase()
         {
             dbctx = new ApplicationContext();
         }
 
-        public T Create(T item)
+        public void Create(T item)
         {
+            dbctx = new ApplicationContext();
             dbctx.Add(item);
             dbctx.SaveChanges();
-            return item;
         }
 
         public void Update(T item)
         {
+            dbctx = new ApplicationContext();
+            dbctx.Attach(item);
+
+            var collections = dbctx.Entry(item).Collections;
+            foreach (var collection in collections)
+            {
+                if (collection.CurrentValue == null)
+                    continue;
+
+                foreach (var element in collection.CurrentValue)
+                    if (dbctx.Entry(element).State == EntityState.Unchanged)
+                        dbctx.Entry(element).State = EntityState.Modified;
+            }
+
+            foreach (var element in dbctx.Entry(item).References)
+            {
+                if (element.CurrentValue == null)
+                    continue;
+
+                if (dbctx.Entry(element.CurrentValue).State == EntityState.Unchanged)
+                    dbctx.Entry(element.CurrentValue).State = EntityState.Modified;
+            }
+
             dbctx.Update(item);
             dbctx.SaveChanges();
+
+            dbctx.Entry(item).State = EntityState.Detached;
         }
 
         public T[] Read()
         {
+            dbctx = new ApplicationContext();
             var dbset = dbctx.Set<T>();
-            return dbset.ToArray();
+            var items = dbset.ToArray();
+            AfterRead?.Invoke(items);
+            return items;
         }
 
         public void Delete(T item)
         {
+            dbctx = new ApplicationContext();
             dbctx.Remove(item);
             dbctx.SaveChanges();
         }
