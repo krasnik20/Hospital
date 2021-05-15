@@ -8,12 +8,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-
-        <DataGrid Grid.Column="1"/>
+        <TabControl>
+            <TabItem Header="Пациенты">
+                <TabItem.Content>
+                    <views:PatientsTab></views:PatientsTab>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Услуги">
+                <TabItem.Content>
+                    <views:ServisesTab></views:ServisesTab>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Палаты">
+                <TabItem.Content>
+                    <views:HospitalRoomsTab></views:HospitalRoomsTab>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
