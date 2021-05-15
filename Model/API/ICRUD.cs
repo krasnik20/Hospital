@@ -10,7 +10,6 @@ namespace Hospital.Services
     {
         TEntity Create(TEntity item);
         void Update(TEntity item);
-        TEntity ReadOne(int id);
         TEntity[] Read();
         TEntity Delete(TEntity item);
     }

@@ -1,11 +1,38 @@
-﻿namespace Hospital.Services
+﻿using System.Linq;
+
+namespace Hospital.Services
 {
-    public abstract class ServiceBase
+    public class ServiceBase<T> where T : class
     {
-        protected readonly ApplicationContext applicationContext;
+        protected readonly ApplicationContext dbctx;
         public ServiceBase()
         {
-            applicationContext = new ApplicationContext();
+            dbctx = new ApplicationContext();
+        }
+
+        public T Create(T item)
+        {
+            dbctx.Add(item);
+            dbctx.SaveChanges();
+            return item;
+        }
+
+        public void Update(T item)
+        {
+            dbctx.Update(item);
+            dbctx.SaveChanges();
+        }
+
+        public T[] Read()
+        {
+            var dbset = dbctx.Set<T>();
+            return dbset.ToArray();
+        }
+
+        public void Delete(T item)
+        {
+            dbctx.Remove(item);
+            dbctx.SaveChanges();
         }
     }
 }
