@@ -3,26 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hospital.Views.Dialogues"
+        xmlns:local="clr-namespace:Hospital.Views.Dialogues" 
+        xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
         Title="AddPatientDialogue" Height="500" Width="500">
+    <Window.DataContext>
+        <viewmodels:AddPatientViewModel/>
+    </Window.DataContext>
 
     <DockPanel LastChildFill="False" Margin="20">
         <StackPanel HorizontalAlignment="Stretch" DockPanel.Dock="Top">
             <Label>Имя:</Label>
-            <TextBox/>
+            <TextBox Text="{Binding CurrentPatient.FirstName}"/>
             <Label>Фамилия:</Label>
-            <TextBox/>
+            <TextBox Text="{Binding CurrentPatient.LastName}"/>
             <Label>Диагноз:</Label>
-            <ComboBox/>
+            <ComboBox ItemsSource="{Binding AvailableDiseases}"/>
             <Label>Дата поступления:</Label>
-            <DatePicker/>
+            <DatePicker SelectedDate="{Binding CurrentPatient.ArrivalDate}"/>
             <Label>Дата выписки:</Label>
-            <DatePicker/>
+            <DatePicker SelectedDate="{Binding CurrentPatient.ArrivalDate}"/>
             <Label>Палата:</Label>
             <ComboBox/>
             <Label>Лечение:</Label>
-            <TextBox/>
             <DataGrid/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom" Orientation="Horizontal">
