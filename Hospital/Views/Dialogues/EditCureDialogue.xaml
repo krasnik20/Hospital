@@ -1,17 +1,18 @@
-﻿<Window x:Class="Hospital.Views.Dialogues.AddServiceDialogue"
+﻿<Window x:Class="Hospital.Views.Dialogues.EditCureDialogue"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hospital.Views.Dialogues" xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
+        xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
-        Title="AddServiceDialogue" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
+        Title="Редактировать услугу" SizeToContent="Height" Width="500" ResizeMode="CanMinimize"
+        Closed="Window_Closed">
 
     <Window.DataContext>
-        <viewmodels:AddServiceViewModel/>
+        <viewmodels:EditCureViewModel/>
     </Window.DataContext>
     
-    <StackPanel Margin="20">
+    <StackPanel Margin="20,0,20,20">
         <Label>Наименование услуги:</Label>
         <TextBox Text="{Binding CurrentCure.Name}"/>
         <Label>Цена:</Label>
@@ -27,8 +28,8 @@
             <Button Grid.Column="1" Margin="0,10,0,0">Добавить</Button>
         </Grid>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="20">
-            <Button Width="100">Сохранить</Button>
-            <Button Margin="20,0,0,0" Width="100">Отмена</Button>
+            <Button Width="100" Command="{Binding SaveCommand}">Сохранить</Button>
+            <Button Margin="20,0,0,0" Width="100" Command="{Binding CancelCommand}">Отмена</Button>
         </StackPanel>
     </StackPanel>
         

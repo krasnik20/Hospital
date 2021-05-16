@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Hospital.Views.CuresTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
+             mc:Ignorable="d" 
+             HorizontalAlignment="Stretch"
+             x:Name="CurrentTab">
+    <UserControl.DataContext>
+        <viewmodels:CuresViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid Margin="20, 0, 20, 20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0">Список услуг:</Label>
+        <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Cures}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding StringFormat={}{0} рублей, Path=Price}" Header="Цена"/>
+                    <GridViewColumn Width="72">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="✏" 
+                                            Command="{Binding Source={x:Reference CurrentTab}, Path=DataContext.EditCureCommand}" 
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource ActionButton}"/>
+                                    <Button Content="❌" Style="{StaticResource ActionButton}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row ="2" Width="130" Height="30" HorizontalAlignment="Left" Margin="0,10,0,0" Command="{Binding AddCureCommand}">Добавить услугу</Button>
+    </Grid>
+</UserControl>

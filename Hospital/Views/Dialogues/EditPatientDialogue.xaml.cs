@@ -4,16 +4,16 @@ using System.Windows;
 
 namespace Hospital.Views.Dialogues
 {
-    public partial class AddPatientDialogue : Window
+    public partial class EditPatientDialogue : Window
     {
-        public AddPatientDialogue()
+        public EditPatientDialogue()
         {
             InitializeComponent();
         }
 
         public void SetPatient(Patient patient)
         {
-            (DataContext as AddPatientViewModel).CurrentPatient = patient;
+            (DataContext as EditPatientViewModel).CurrentPatient = patient;
         }
     }
 }

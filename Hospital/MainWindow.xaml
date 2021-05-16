@@ -16,12 +16,12 @@
             </TabItem>
             <TabItem Header="Услуги">
                 <TabItem.Content>
-                    <views:ServisesTab></views:ServisesTab>
+                    <views:CuresTab></views:CuresTab>
                 </TabItem.Content>
             </TabItem>
             <TabItem Header="Палаты">
                 <TabItem.Content>
-                    <views:HospitalRoomsTab></views:HospitalRoomsTab>
+                    <views:RoomsTab></views:RoomsTab>
                 </TabItem.Content>
             </TabItem>
         </TabControl>

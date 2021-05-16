@@ -18,7 +18,7 @@ namespace Hospital.ViewModels
 
         private void addPatient(object param)
         {
-            var dialog = new AddPatientDialogue();
+            var dialog = new EditPatientDialogue();
             dialog.ShowDialog();
         }
     }

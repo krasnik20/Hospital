@@ -2,7 +2,7 @@
 
 namespace Hospital.ViewModels
 {
-    class AddTreatmentViewModel : BaseViewModel
+    class EditTreatmentViewModel : BaseViewModel
     {
         private CureRecord currentCureRecord;
         private Cure[] availableCures;
@@ -10,7 +10,7 @@ namespace Hospital.ViewModels
         public CureRecord CurrentCureRecord { get => currentCureRecord; set => SetProperty(ref currentCureRecord, value); }
         public Cure[] AvailableCures { get => availableCures; set => SetProperty(ref availableCures, value); }
 
-        public AddTreatmentViewModel()
+        public EditTreatmentViewModel()
         {
 
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Hospital.Services
@@ -51,11 +52,15 @@ namespace Hospital.Services
             dbctx.Entry(item).State = EntityState.Detached;
         }
 
-        public T[] Read()
+        public T[] Read(Func<T, bool> Filter)
         {
             dbctx = new ApplicationContext();
-            var dbset = dbctx.Set<T>();
-            var items = dbset.ToArray();
+            IEnumerable<T> query = dbctx.Set<T>();
+
+            if(Filter != null)
+                query = query.Where(Filter);
+
+            var items = query.ToArray();
             AfterRead?.Invoke(items);
             return items;
         }

@@ -7,25 +7,25 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\Dialogues\AddPatientDialogue.xaml.cs">
+    <Compile Update="Views\Dialogues\EditPatientDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Dialogues\AddTreatmentDialogue.xaml.cs">
+    <Compile Update="Views\Dialogues\EditTreatmentDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Dialogues\EditRoomDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Dialogues\AddServiceDialogue.xaml.cs">
+    <Compile Update="Views\Dialogues\EditCureDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\HospitalRoomsTab.xaml.cs">
+    <Compile Update="Views\RoomsTab.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PatientsTab.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ServisesTab.xaml.cs">
+    <Compile Update="Views\CuresTab.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -33,25 +33,25 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Dialogues\AddPatientDialogue.xaml">
+    <Page Update="Views\Dialogues\EditPatientDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Dialogues\AddTreatmentDialogue.xaml">
+    <Page Update="Views\Dialogues\EditTreatmentDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Dialogues\EditRoomDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Dialogues\AddServiceDialogue.xaml">
+    <Page Update="Views\Dialogues\EditCureDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\HospitalRoomsTab.xaml">
+    <Page Update="Views\RoomsTab.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\PatientsTab.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ServisesTab.xaml">
+    <Page Update="Views\CuresTab.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
