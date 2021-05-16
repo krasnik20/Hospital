@@ -1,32 +1,22 @@
-﻿<Window x:Class="Hospital.Views.Dialogues.AddServiceDialogue"
+﻿<Window x:Class="Hospital.Views.Dialogues.AddTreatmentDialogue"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.Views.Dialogues"
         mc:Ignorable="d"
-        Title="AddServiceDialogue" Height="auto" Width="500">
-    
+        Title="AddTreatmentDialogue" Height="auto" Width="500">
     <StackPanel Margin="20">
-        <Label>Наименование услуги:</Label>
+        <Label>Препарат:</Label>
+        <ComboBox/>
+        <Label>Продолжительность приёма:</Label>
         <TextBox/>
-        <Label>Цена:</Label>
+        <Label>Инструкция:</Label>
         <TextBox/>
-        <Label>Показания:</Label>
-        <DataGrid/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <ComboBox Margin="0,10,5,0"/>
-            <Button Grid.Column="1" Margin="0,10,0,0">Добавить</Button>
-        </Grid>
+        
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="20">
             <Button Width="100">Сохранить</Button>
             <Button Margin="20,0,0,0" Width="100">Отмена</Button>
         </StackPanel>
     </StackPanel>
-        
-
 </Window>

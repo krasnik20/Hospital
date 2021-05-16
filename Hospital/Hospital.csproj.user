@@ -10,6 +10,9 @@
     <Compile Update="Views\Dialogues\AddPatientDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Dialogues\AddTreatmentDialogue.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Dialogues\EditRoomDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Dialogues\AddPatientDialogue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dialogues\AddTreatmentDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Dialogues\EditRoomDialogue.xaml">
