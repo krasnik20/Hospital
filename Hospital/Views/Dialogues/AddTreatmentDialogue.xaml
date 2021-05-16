@@ -3,16 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hospital.Views.Dialogues"
+        xmlns:local="clr-namespace:Hospital.Views.Dialogues" xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
-        Title="AddTreatmentDialogue" Height="auto" Width="500">
+        Title="AddTreatmentDialogue" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <viewmodels:AddTreatmentViewModel/>
+    </Window.DataContext>
+    
     <StackPanel Margin="20">
         <Label>Препарат:</Label>
         <ComboBox/>
         <Label>Продолжительность приёма:</Label>
-        <TextBox/>
+        <TextBox Text="{Binding CurrentCureRecord.Duration}"/>
         <Label>Инструкция:</Label>
-        <TextBox/>
+        <TextBox Text="{Binding CurrentCureRecord.Instructions}"/>
         
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="20">
             <Button Width="100">Сохранить</Button>

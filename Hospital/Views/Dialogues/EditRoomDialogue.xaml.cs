@@ -17,9 +17,9 @@ namespace Hospital.Views.Dialogues
     /// <summary>
     /// Логика взаимодействия для AddRoomDialogue.xaml
     /// </summary>
-    public partial class AddRoomDialogue : Window
+    public partial class EditRoomDialogue : Window
     {
-        public AddRoomDialogue()
+        public EditRoomDialogue()
         {
             InitializeComponent();
         }

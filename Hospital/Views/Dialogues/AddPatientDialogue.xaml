@@ -34,7 +34,7 @@
         <ComboBox/>
         <Label>Лечение:</Label>
         <DataGrid/>
-        <Button Width="100" HorizontalAlignment="Left" Margin="0,10">Добавить</Button>
+        <Button Width="100" HorizontalAlignment="Left" Margin="0,10" Command="{Binding AddTreatmentCommand}">Добавить</Button>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Width="100">Сохранить</Button>
             <Button Margin="20,0,0,0" Width="100">Отмена</Button>
