@@ -25,9 +25,6 @@ namespace Hospital
 
             var serv2 = new PatientService();
             var result = serv2.Read();
-            var dialog = new AddPatientDialogue();
-            dialog.SetPatient(pat);
-            dialog.ShowDialog();
         }
     }
 }

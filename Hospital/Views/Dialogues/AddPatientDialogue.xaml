@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Hospital.Views.Dialogues" 
         xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
-        Title="AddPatientDialogue" Height="auto" Width="500">
+        Title="Редактирование пациента" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
     <Window.DataContext>
         <viewmodels:AddPatientViewModel/>
     </Window.DataContext>
@@ -34,7 +34,7 @@
         <ComboBox/>
         <Label>Лечение:</Label>
         <DataGrid/>
-        <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Width="100">Сохранить</Button>
             <Button Margin="20,0,0,0" Width="100">Отмена</Button>
         </StackPanel>
