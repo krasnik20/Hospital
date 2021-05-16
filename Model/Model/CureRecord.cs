@@ -2,12 +2,12 @@
 
 namespace Model.Model
 {
-    public class DrugRecord
+    public class CureRecord
     {
         public int Id { get; set; }
-        public Drug Drug { get; set; }
+        public Cure Cure { get; set; }
         public TimeSpan Duration { get; set; }
         public string Instructions { get; set; }
-        public Treatment Treatment { get; set; }
+        public Patient Patient { get; set; }
     }
 }

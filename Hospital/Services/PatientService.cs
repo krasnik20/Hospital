@@ -11,7 +11,10 @@ namespace Hospital.Services
             AfterRead += (Patient[] items) =>
             {
                 foreach (var item in items)
+                {
                     dbctx.Entry(item).Collection(i => i.Diagnosis).Query().Include(d => d.Disease).Load();
+                    dbctx.Entry(item).Collection(i => i.Treatment).Query().Include(d => d.Cure).Load();
+                }
             };
         }
     }

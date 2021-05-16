@@ -2,7 +2,7 @@
 
 namespace Model.Model
 {
-    public class Drug
+    public class Cure
     {
         public int Id { get; set; }
         public string Name { get; set; }
