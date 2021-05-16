@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.Views.Dialogues" xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
-        Title="AddTreatmentDialogue" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
+        Title="Редактирования назначенного лечения" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
     <Window.DataContext>
         <viewmodels:EditTreatmentViewModel/>
     </Window.DataContext>
     
-    <StackPanel Margin="20">
+    <StackPanel Margin="20,0,20,20">
         <Label>Препарат:</Label>
         <ComboBox/>
         <Label>Продолжительность приёма:</Label>

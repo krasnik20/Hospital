@@ -9,7 +9,7 @@ namespace Hospital.Services
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Cure> Drugs { get; set; }
-        public DbSet<CureRecord> DrugRecords { get; set; }
+        public DbSet<CureRecord> CureRecords { get; set; }
         public DbSet<Disease> Diseases { get; set; }
         public DbSet<PatientDisease> PatientDiseases { get; set; }
         public ApplicationContext()
@@ -26,12 +26,14 @@ namespace Hospital.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Patient>()
-                    .HasMany(p => p.Diagnosis)
-                    .WithOne(d => d.Patient);
-            
+                    .HasMany(p => p.Diseases)
+                    .WithOne(d => d.Patient)
+                    .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Patient>()
                     .HasMany(p => p.Treatment)
-                    .WithOne(t => t.Patient);
+                    .WithOne(t => t.Patient)
+                    .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

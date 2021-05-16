@@ -9,6 +9,7 @@ namespace Hospital.Services
     {
         protected ApplicationContext dbctx;
         protected Action<T[]> AfterRead;
+        protected Action<T> BeforeUpdate;
         public EntityServiceBase()
         {
             dbctx = new ApplicationContext();
@@ -24,6 +25,9 @@ namespace Hospital.Services
         public void Update(T item)
         {
             dbctx = new ApplicationContext();
+
+            BeforeUpdate?.Invoke(item);
+
             dbctx.Attach(item);
 
             var collections = dbctx.Entry(item).Collections;

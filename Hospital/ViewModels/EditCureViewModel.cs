@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Model.Model;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Hospital.ViewModels
@@ -9,12 +11,13 @@ namespace Hospital.ViewModels
     class EditCureViewModel : BaseViewModel
     {
         private readonly ICRUD<Cure> cureService;
-
         private Cure currentCure;
-        private Disease[] availableDiseases;
 
-        public Cure CurrentCure { get => currentCure; set => SetProperty(ref currentCure, value); }
-        public Disease[] AvailableDiseases { get => availableDiseases; set => SetProperty(ref availableDiseases, value); }
+        public Cure CurrentCure
+        {
+            get => currentCure;
+            set => SetProperty(ref currentCure, value);
+        }
 
         public RelayCommand SaveCommand { get; }
         public RelayCommand CancelCommand { get; }

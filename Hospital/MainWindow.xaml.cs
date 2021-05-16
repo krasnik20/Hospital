@@ -1,5 +1,6 @@
 ﻿using Hospital.Services;
 using Hospital.Views.Dialogues;
+using Microsoft.Extensions.DependencyInjection;
 using Model.Model;
 using System.Collections.Generic;
 using System.Windows;
@@ -22,8 +23,8 @@ namespace Hospital
             //    },
             //    Treatment = new List<CureRecord>
             //    {
-            //        new CureRecord { Cure = new Cure {Name = "Cure1"}, Instructions="пошел нахуй"},
-            //        new CureRecord { Cure = new Cure {Name = "Cure2"}, Instructions="пошел в пизду"}
+            //        new CureRecord { Cure = new Cure {Name = "Cure1"}, Instructions="пошел туда"},
+            //        new CureRecord { Cure = new Cure {Name = "Cure2"}, Instructions="пошел сюда"}
             //    }
             //};
             //serv.Create(pat);
@@ -36,6 +37,10 @@ namespace Hospital
 
             //var serv2 = new PatientService();
             //var result = serv2.Read();
+
+            //var serv = ServiceProvider.Instance.GetRequiredService<ICRUD<Disease>>();
+            //serv.Create(new Disease { Name = "Смерть" });
+            //serv.Create(new Disease { Name = "Дважды гражданин ссср" });
         }
     }
 }

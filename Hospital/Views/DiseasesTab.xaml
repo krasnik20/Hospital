@@ -1,14 +1,14 @@
-﻿<UserControl x:Class="Hospital.Views.CuresTab"
+﻿<UserControl x:Class="Hospital.Views.DiseasesTab"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
              mc:Ignorable="d" 
-             HorizontalAlignment="Stretch"
-             x:Name="CurrentTab">
+             x:Name="CurrentTab"
+             d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <viewmodels:CuresViewModel/>
+        <viewmodels:DiseasesViewModel/>
     </UserControl.DataContext>
     
     <Grid Margin="20, 0, 20, 20">
@@ -17,23 +17,23 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0">Список услуг:</Label>
-        <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Cures}">
+        <Label Grid.Row="0">Список болезней:</Label>
+        <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Diseases}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название" Width="300"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding StringFormat={}{0} руб., Path=Price}" Header="Цена" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название" Width="200"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Symptoms, TargetNullValue=Не указаны}" Header="Симптомы" Width="400"/>
                     <GridViewColumn Width="62">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Button Content="✏" 
                                             Style="{StaticResource ActionButton}"
-                                            Command="{Binding Source={x:Reference CurrentTab}, Path=DataContext.EditCureCommand}" 
+                                            Command="{Binding Source={x:Reference CurrentTab}, Path=DataContext.EditCommand}" 
                                             CommandParameter="{Binding}"/>
                                     <Button Content="❌" 
                                             Style="{StaticResource ActionButton}"
-                                            Command="{Binding Source={x:Reference CurrentTab}, Path=DataContext.RemoveCureCommand}" 
+                                            Command="{Binding Source={x:Reference CurrentTab}, Path=DataContext.RemoveCommand}" 
                                             CommandParameter="{Binding}"/>
                                 </StackPanel>
                             </DataTemplate>
@@ -42,6 +42,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row ="2" Width="130" Height="30" HorizontalAlignment="Left" Margin="0,10,0,0" Command="{Binding AddCureCommand}">Добавить услугу</Button>
+        <Button Grid.Row ="2" Width="130" Height="30" HorizontalAlignment="Left" Margin="0,10,0,0" Command="{Binding AddCommand}">Добавить диагноз</Button>
     </Grid>
 </UserControl>

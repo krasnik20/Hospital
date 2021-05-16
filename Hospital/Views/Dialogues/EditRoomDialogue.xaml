@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.Views.Dialogues"
         mc:Ignorable="d"
-        Title="EditRoomDialogue" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
-    <StackPanel DockPanel.Dock="Top" Margin="20">
+        Title="Редактирование палаты" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
+    <StackPanel DockPanel.Dock="Top" Margin="20,0,20,20">
             <Label>Лечащий врач:</Label>
             <ComboBox/>
             <Label>Список пациентов:</Label>

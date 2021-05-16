@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Model.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace Hospital.ViewModels
 {
@@ -16,12 +17,14 @@ namespace Hospital.ViewModels
 
         public RelayCommand AddCureCommand { get; }
         public RelayCommand EditCureCommand { get; }
+        public RelayCommand RemoveCureCommand { get; }
 
 
         public CuresViewModel()
         {
             AddCureCommand = new RelayCommand(addCure);
             EditCureCommand = new RelayCommand(editCure);
+            RemoveCureCommand = new RelayCommand(removeCure);
 
             cureService = ServiceProvider.Instance.GetRequiredService<ICRUD<Cure>>();
 
@@ -43,6 +46,19 @@ namespace Hospital.ViewModels
             var dialog = new EditCureDialogue();
             dialog.ShowDialog();
             LoadData();
+        }
+
+        private void removeCure(object param)
+        {
+            try
+            {
+                cureService.Delete(param as Cure);
+                LoadData();
+            }
+            catch
+            {
+                MessageBox.Show("Нельзя удалить услугу, т.к. ее использует кто-то из пациентов.", "Ошибка");
+            }
         }
     }
 }

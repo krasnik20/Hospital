@@ -11,17 +11,22 @@
         <TabControl HorizontalAlignment="Stretch">
             <TabItem Header="Пациенты">
                 <TabItem.Content>
-                    <views:PatientsTab></views:PatientsTab>
+                    <views:PatientsTab/>
                 </TabItem.Content>
             </TabItem>
             <TabItem Header="Услуги">
                 <TabItem.Content>
-                    <views:CuresTab></views:CuresTab>
+                    <views:CuresTab/>
                 </TabItem.Content>
             </TabItem>
             <TabItem Header="Палаты">
                 <TabItem.Content>
-                    <views:RoomsTab></views:RoomsTab>
+                    <views:RoomsTab/>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Каталог болезней">
+                <TabItem.Content>
+                    <views:DiseasesTab/>
                 </TabItem.Content>
             </TabItem>
         </TabControl>

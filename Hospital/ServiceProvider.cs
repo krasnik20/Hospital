@@ -17,6 +17,7 @@ namespace Hospital
 
                 .AddSingleton<ICRUD<Patient>, PatientService>()
                 .AddSingleton<ICRUD<Cure>, EntityServiceBase<Cure>>()
+                .AddSingleton<ICRUD<Disease>, EntityServiceBase<Disease>>()
 
                 .AddTransient<EditCureViewModel>()
                 .AddTransient<EditPatientViewModel>()

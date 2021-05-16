@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\Dialogues\EditDiseaseDialogue.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Dialogues\EditPatientDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -17,6 +20,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Dialogues\EditCureDialogue.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DiseasesTab.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\RoomsTab.xaml.cs">
@@ -33,6 +39,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Dialogues\EditDiseaseDialogue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Dialogues\EditPatientDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -43,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Dialogues\EditCureDialogue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DiseasesTab.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\RoomsTab.xaml">
