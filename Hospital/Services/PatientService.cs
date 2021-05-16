@@ -1,14 +1,10 @@
-﻿using Model.Model;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using Model.Model;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.Services
 {
-    public class PatientService : ServiceBase<Patient>
+    public class PatientService : EntityServiceBase<Patient>
     {
         public PatientService()
         {

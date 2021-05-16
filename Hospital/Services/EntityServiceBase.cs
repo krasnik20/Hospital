@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Hospital.Services
 {
-    public class ServiceBase<T> : ICRUD<T> where T : class
+    public class EntityServiceBase<T> : ICRUD<T> where T : class
     {
         protected ApplicationContext dbctx;
         protected Action<T[]> AfterRead;
-        public ServiceBase()
+        public EntityServiceBase()
         {
             dbctx = new ApplicationContext();
         }
