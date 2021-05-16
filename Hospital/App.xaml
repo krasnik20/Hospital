@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:Hospital"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style x:Key="ActionButton" TargetType="Button">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Background" Value="White"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
