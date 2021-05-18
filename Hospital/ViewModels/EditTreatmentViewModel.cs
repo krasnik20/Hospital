@@ -70,7 +70,8 @@ namespace Hospital.ViewModels
             }
             CurrentCureRecord.Cure = SelectedCure;
             CurrentCureRecord.Patient = CurrentPatient;
-            CurrentPatient.Treatment.Add(CurrentCureRecord);
+            if(CurrentCureRecord.Id == 0)
+                CurrentPatient.Treatment.Add(CurrentCureRecord);
             OnCommandPerformed?.Invoke();
         }
     }

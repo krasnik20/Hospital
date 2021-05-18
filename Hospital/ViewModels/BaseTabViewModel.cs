@@ -1,14 +1,17 @@
 ﻿using Hospital.Services;
 using Hospital.Views.Dialogues;
 using Microsoft.Extensions.DependencyInjection;
+using Model.Model;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 
 namespace Hospital.ViewModels
 {
-    class BaseTabViewModel<T> : BaseViewModel where T: class
+    class BaseTabViewModel<T> : BaseViewModel where T: Entity
     {
-        private readonly ICRUD<T> entityService;
+        protected readonly ICRUD<T> entityService;
+        protected string removeErrorMessage;
 
         private ObservableCollection<T> entities;
         public ObservableCollection<T> Entities { get => entities; set => SetProperty(ref entities, value); }
@@ -16,7 +19,7 @@ namespace Hospital.ViewModels
         public Command AddCommand { get; }
         public Command RemoveCommand { get; }
 
-        public BaseTabViewModel()
+        public BaseTabViewModel(string removeErrorMessage = "Нельзя удалить cущность, т.к. она связана с другой сущностью.")
         {
             EditCommand = new Command(edit);
             AddCommand = new Command(add);
@@ -25,29 +28,30 @@ namespace Hospital.ViewModels
             entityService = ServiceProvider.Instance.GetRequiredService<ICRUD<T>>();
 
             LoadData();
+            this.removeErrorMessage = removeErrorMessage;
         }
 
-        private void LoadData()
+        protected void LoadData()
         {
             Entities = new ObservableCollection<T>(entityService.Read());
         }
 
-        private void add(object obj)
+        protected void add(object obj)
         {
             var dialog = ServiceProvider.Instance.GetRequiredService<IEditDialog<T>>();
             (dialog as Window).ShowDialog();
             LoadData();
         }
 
-        private void edit(object param)
+        protected void edit(object param)
         {
             var dialog = ServiceProvider.Instance.GetRequiredService<IEditDialog<T>>();
-            dialog.SetEntity(param as T);
+            dialog.SetEntity(entityService.Read(e => e.Id == (param as T).Id).FirstOrDefault());
             (dialog as Window).ShowDialog();
             LoadData();
         }
 
-        private void remove(object param)
+        protected void remove(object param)
         {
             try
             {
@@ -56,7 +60,7 @@ namespace Hospital.ViewModels
             }
             catch
             {
-                MessageBox.Show("Нельзя удалить палату, т.к. к ней относятся пациенты.", "Ошибка");
+                MessageBox.Show(removeErrorMessage, "Ошибка");
             }
         }
     }

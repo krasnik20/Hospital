@@ -12,35 +12,6 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-            //var serv = new PatientService();
-            //var pat = new Patient 
-            //{ 
-            //    FirstName = "adding", 
-            //    Diagnosis = new List<PatientDisease> 
-            //    { 
-            //        new PatientDisease { Disease = new Disease { Name = "Disease1" } }, 
-            //        new PatientDisease { Disease = new Disease { Name = "Disease2" } } 
-            //    },
-            //    Treatment = new List<CureRecord>
-            //    {
-            //        new CureRecord { Cure = new Cure {Name = "Cure1"}, Instructions="пошел туда"},
-            //        new CureRecord { Cure = new Cure {Name = "Cure2"}, Instructions="пошел сюда"}
-            //    }
-            //};
-            //serv.Create(pat);
-
-            //var serv3 = new PatientService();
-            //pat = serv3.Read()[0];
-            //pat.Diagnosis = null;
-            //pat.FirstName = "TEST";
-            //serv3.Update(pat);
-
-            //var serv2 = new PatientService();
-            //var result = serv2.Read();
-
-            //var serv = ServiceProvider.Instance.GetRequiredService<ICRUD<Disease>>();
-            //serv.Create(new Disease { Name = "Смерть" });
-            //serv.Create(new Disease { Name = "Дважды гражданин ссср" });
         }
     }
 }

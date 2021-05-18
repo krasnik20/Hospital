@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace Hospital.ViewModels
 {
-    class EditPatientViewModel : EditBaseViewModel<Patient>
+    class EditPatientViewModel : BaseViewModel
     {
         private readonly ICRUD<Patient> patientService;
         private readonly ICRUD<Disease> diseaseService;
