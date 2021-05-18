@@ -3,14 +3,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
+             mc:Ignorable="d"
+             x:Name="CurrentTab">
+    <UserControl.DataContext>
+        <viewmodels:RoomsViewModel/>
+    </UserControl.DataContext>
     <Grid Margin="20, 0, 20, 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0">Список палат</Label>
-        <DataGrid Grid.Row="1"/>
+        <Label Grid.Row="0">Список палат:</Label>
+        <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Entities}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Number}" Header="Номер" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Doctor}" Header="Доктор" Width="200"/>
+                    <GridViewColumn Width="62">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="✏" 
+                                            Style="{StaticResource ActionButton}"
+                                            Command="{Binding Source={x:Reference CurrentTab}, Path=DataContext.EditCommand}" 
+                                            CommandParameter="{Binding}"/>
+                                    <Button Content="❌" 
+                                            Style="{StaticResource ActionButton}"
+                                            Command="{Binding Source={x:Reference CurrentTab}, Path=DataContext.RemoveCommand}" 
+                                            CommandParameter="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row ="2" Width="130" Height="30" HorizontalAlignment="Left" Margin="0,10,0,0" Command="{Binding AddCommand}">Добавить палату</Button>
     </Grid>
 </UserControl>

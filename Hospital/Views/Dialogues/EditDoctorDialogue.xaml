@@ -1,23 +1,26 @@
-﻿<Window x:Class="Hospital.Views.Dialogues.EditRoomDialogue"
+﻿<Window x:Class="Hospital.Views.Dialogues.EditDoctorDialogue"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
-        Title="Редактирование палаты" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
+        Title="Редактирование доктора" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
     <Window.DataContext>
-        <viewmodels:EditRoomViewModel/>
+        <viewmodels:EditDoctorViewModel/>
     </Window.DataContext>
+
     <StackPanel Margin="20,0">
-            <Label>Номер палаты:</Label>
-        <TextBox Text="{Binding CurrentRoom.Number}"/>
-        <Label>Лечащий врач:</Label>
-        <ComboBox ItemsSource="{Binding AvailableDoctors}" SelectedValue="{Binding SelectedDoctor}" Text="Выберите доктора" IsEditable="True" IsReadOnly="True"/>
+        <Label>Имя:</Label>
+        <TextBox Text="{Binding CurrentDoctor.FirstName}"/>
+        <Label>Фамилия:</Label>
+        <TextBox Text="{Binding CurrentDoctor.LastName}"/>
+        <Label>Специальность:</Label>
+        <TextBox Text="{Binding CurrentDoctor.Speciality}"/>
+
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="20">
             <Button Width="100" Command="{Binding SaveCommand}">Сохранить</Button>
             <Button Margin="20,0,0,0" Width="100" Click="CancelButton_Click">Отмена</Button>
         </StackPanel>
     </StackPanel>
-    
 </Window>

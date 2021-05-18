@@ -1,11 +1,10 @@
 ﻿using Hospital.ViewModels;
 using Model.Model;
-using System;
 using System.Windows;
 
 namespace Hospital.Views.Dialogues
 {
-    public partial class EditDiseaseDialogue : Window
+    public partial class EditDiseaseDialogue : Window, IEditDialog<Disease>
     {
         public EditDiseaseDialogue()
         {
@@ -13,14 +12,14 @@ namespace Hospital.Views.Dialogues
             (DataContext as EditDiseaseViewModel).OnCommandPerformed += () => Close();
         }
 
-        public void SetCure(Disease disease)
+        public void SetEntity(Disease entity)
         {
-            (DataContext as EditDiseaseViewModel).CurrentDisease = disease;
+            (DataContext as EditDiseaseViewModel).CurrentDisease = entity;
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            (DataContext as EditDiseaseViewModel).CancelCommand.Execute(null);
+            Close();
         }
     }
 }

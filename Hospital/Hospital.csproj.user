@@ -10,6 +10,9 @@
     <Compile Update="Views\Dialogues\EditDiseaseDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Dialogues\EditDoctorDialogue.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Dialogues\EditPatientDialogue.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -23,6 +26,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\DiseasesTab.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DoctorsTab.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\RoomsTab.xaml.cs">
@@ -42,6 +48,9 @@
     <Page Update="Views\Dialogues\EditDiseaseDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Dialogues\EditDoctorDialogue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Dialogues\EditPatientDialogue.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -55,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DiseasesTab.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DoctorsTab.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\RoomsTab.xaml">

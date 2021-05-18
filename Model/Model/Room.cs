@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Model.Model
 {
-    public class Room
+    public class Room : Entity
     {
-        public int Id { get; set; }
         [Required]
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public Doctor Doctor { get; set; }
-        public List<Patient> Patients { get; set; }
+        public override string ToString() => $"№{Number} (Врач: {(Doctor == null ? "(не назначен)" : Doctor)})";
     }
 }

@@ -10,6 +10,7 @@ namespace Hospital.Services
         protected ApplicationContext dbctx;
         protected Action<T[]> AfterRead;
         protected Action<T> BeforeUpdate;
+        protected Action<T> BeforeCreate;
         public EntityServiceBase()
         {
             dbctx = new ApplicationContext();
@@ -18,8 +19,27 @@ namespace Hospital.Services
         public void Create(T item)
         {
             dbctx = new ApplicationContext();
+
+            BeforeCreate?.Invoke(item);
+
+            changeState(item);
+
             dbctx.Add(item);
             dbctx.SaveChanges();
+        }
+
+        public T[] Read(Func<T, bool> Filter)
+        {
+            dbctx = new ApplicationContext();
+
+            IEnumerable<T> query = dbctx.Set<T>();
+
+            if (Filter != null)
+                query = query.Where(Filter);
+
+            var items = query.ToArray();
+            AfterRead?.Invoke(items);
+            return items;
         }
 
         public void Update(T item)
@@ -28,6 +48,23 @@ namespace Hospital.Services
 
             BeforeUpdate?.Invoke(item);
 
+            changeState(item);
+
+            dbctx.Update(item);
+            dbctx.SaveChanges();
+
+            dbctx.Entry(item).State = EntityState.Detached;
+        }
+
+        public void Delete(T item)
+        {
+            dbctx = new ApplicationContext();
+            dbctx.Remove(item);
+            dbctx.SaveChanges();
+        }
+
+        private void changeState(T item)
+        {
             dbctx.Attach(item);
 
             var collections = dbctx.Entry(item).Collections;
@@ -49,31 +86,6 @@ namespace Hospital.Services
                 if (dbctx.Entry(element.CurrentValue).State == EntityState.Unchanged)
                     dbctx.Entry(element.CurrentValue).State = EntityState.Modified;
             }
-
-            dbctx.Update(item);
-            dbctx.SaveChanges();
-
-            dbctx.Entry(item).State = EntityState.Detached;
-        }
-
-        public T[] Read(Func<T, bool> Filter)
-        {
-            dbctx = new ApplicationContext();
-            IEnumerable<T> query = dbctx.Set<T>();
-
-            if(Filter != null)
-                query = query.Where(Filter);
-
-            var items = query.ToArray();
-            AfterRead?.Invoke(items);
-            return items;
-        }
-
-        public void Delete(T item)
-        {
-            dbctx = new ApplicationContext();
-            dbctx.Remove(item);
-            dbctx.SaveChanges();
         }
     }
 }

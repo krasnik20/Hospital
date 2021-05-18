@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Model.Model;
 using System;
-using System.Linq;
 
 namespace Hospital.ViewModels
 {
@@ -13,8 +12,7 @@ namespace Hospital.ViewModels
 
         public Disease CurrentDisease { get => currentDisease; set => SetProperty(ref currentDisease, value); }
 
-        public RelayCommand SaveCommand { get; }
-        public RelayCommand CancelCommand { get; }
+        public Command SaveCommand { get; }
 
         public Action OnCommandPerformed { get; set; }
 
@@ -22,16 +20,7 @@ namespace Hospital.ViewModels
         {
             CurrentDisease = new Disease();
             diseaseService = ServiceProvider.Instance.GetRequiredService<ICRUD<Disease>>();
-            SaveCommand = new RelayCommand(Save);
-            CancelCommand = new RelayCommand(Cancel);
-        }
-
-        private void Cancel(object obj)
-        {
-            if (CurrentDisease.Id != 0)
-                CurrentDisease = diseaseService.Read(Disease => Disease.Id == CurrentDisease.Id).FirstOrDefault();
-
-            OnCommandPerformed?.Invoke();
+            SaveCommand = new Command(Save);
         }
 
         private void Save(object obj)

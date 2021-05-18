@@ -2,15 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using Model.Model;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace Hospital.ViewModels
 {
     class EditCureViewModel : BaseViewModel
     {
-        private readonly ICRUD<Cure> cureService;
+        protected readonly ICRUD<Cure> cureService;
         private Cure currentCure;
 
         public Cure CurrentCure
@@ -19,8 +16,7 @@ namespace Hospital.ViewModels
             set => SetProperty(ref currentCure, value);
         }
 
-        public RelayCommand SaveCommand { get; }
-        public RelayCommand CancelCommand { get; }
+        public Command SaveCommand { get; }
 
         public Action OnCommandPerformed { get; set; }
 
@@ -28,16 +24,7 @@ namespace Hospital.ViewModels
         {
             CurrentCure = new Cure();
             cureService = ServiceProvider.Instance.GetRequiredService<ICRUD<Cure>>();
-            SaveCommand = new RelayCommand(Save);
-            CancelCommand = new RelayCommand(Cancel);
-        }
-
-        private void Cancel(object obj)
-        {
-            if (CurrentCure.Id != 0)
-                CurrentCure = cureService.Read(cure => cure.Id == CurrentCure.Id).FirstOrDefault();
-
-            OnCommandPerformed?.Invoke();
+            SaveCommand = new Command(Save);
         }
 
         private void Save(object obj)

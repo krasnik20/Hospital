@@ -5,9 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Model
 {
-    public class Patient
+    public class Patient : Entity
     {
-        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -25,7 +24,7 @@ namespace Model.Model
             {
                 int sum = 0;
                 foreach(var c in Treatment)
-                    sum += c.Cure.Price * c.Duration.Days;
+                    sum += c.Cost;
                 return sum;
             }
         }

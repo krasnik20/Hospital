@@ -2,9 +2,8 @@
 
 namespace Model.Model
 {
-    public class Disease
+    public class Disease : Entity
     {
-        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         public string Symptoms { get; set; }

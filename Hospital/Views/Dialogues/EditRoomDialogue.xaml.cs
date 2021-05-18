@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hospital.ViewModels;
+using Model.Model;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Hospital.Views.Dialogues
 {
-    /// <summary>
-    /// Логика взаимодействия для AddRoomDialogue.xaml
-    /// </summary>
-    public partial class EditRoomDialogue : Window
+    public partial class EditRoomDialogue : Window, IEditDialog<Room>
     {
         public EditRoomDialogue()
         {
             InitializeComponent();
+            (DataContext as EditRoomViewModel).OnCommandPerformed += () => Close();
+        }
+
+        public void SetEntity(Room room)
+        {
+            (DataContext as EditRoomViewModel).CurrentRoom = room;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

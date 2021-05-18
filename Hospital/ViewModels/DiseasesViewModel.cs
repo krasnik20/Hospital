@@ -1,63 +1,58 @@
-﻿using Hospital.Services;
-using Hospital.Views.Dialogues;
-using Microsoft.Extensions.DependencyInjection;
-using Model.Model;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using Model.Model;
 
 namespace Hospital.ViewModels
 {
-    class DiseasesViewModel : BaseViewModel
+    class DiseasesViewModel : BaseTabViewModel<Disease>
     {
-        private readonly ICRUD<Disease> diseaseService;
+        //private readonly ICRUD<Disease> diseaseService;
 
-        private ObservableCollection<Disease> diseases;
-        public ObservableCollection<Disease> Diseases { get => diseases; set => SetProperty(ref diseases, value); }
+        //private ObservableCollection<Disease> diseases;
+        //public ObservableCollection<Disease> Diseases { get => diseases; set => SetProperty(ref diseases, value); }
 
-        public RelayCommand AddCommand { get; }
-        public RelayCommand EditCommand { get; }
-        public RelayCommand RemoveCommand { get; }
+        //public Command AddCommand { get; }
+        //public Command EditCommand { get; }
+        //public Command RemoveCommand { get; }
 
 
-        public DiseasesViewModel()
-        {
-            AddCommand = new RelayCommand(addDisease);
-            EditCommand = new RelayCommand(editDisease);
-            RemoveCommand = new RelayCommand(removeDisease);
+        //public DiseasesViewModel()
+        //{
+        //    AddCommand = new Command(addDisease);
+        //    EditCommand = new Command(editDisease);
+        //    RemoveCommand = new Command(removeDisease);
 
-            diseaseService = ServiceProvider.Instance.GetRequiredService<ICRUD<Disease>>();
+        //    diseaseService = ServiceProvider.Instance.GetRequiredService<ICRUD<Disease>>();
 
-            LoadData();
-        }
+        //    LoadData();
+        //}
 
-        private void LoadData() => Diseases = new ObservableCollection<Disease>(diseaseService.Read());
+        //private void LoadData() => Diseases = new ObservableCollection<Disease>(diseaseService.Read());
 
-        private void editDisease(object disease)
-        {
-            var dialog = new EditDiseaseDialogue();
-            dialog.SetCure(disease as Disease);
-            dialog.ShowDialog();
-            LoadData();
-        }
+        //private void editDisease(object disease)
+        //{
+        //    var dialog = new EditDiseaseDialogue();
+        //    dialog.SetCure(disease as Disease);
+        //    dialog.ShowDialog();
+        //    LoadData();
+        //}
 
-        private void addDisease(object param)
-        {
-            var dialog = new EditDiseaseDialogue();
-            dialog.ShowDialog();
-            LoadData();
-        }
+        //private void addDisease(object param)
+        //{
+        //    var dialog = new EditDiseaseDialogue();
+        //    dialog.ShowDialog();
+        //    LoadData();
+        //}
 
-        private void removeDisease(object param)
-        {
-            try
-            {
-                diseaseService.Delete(param as Disease);
-                LoadData();
-            }
-            catch
-            {
-                MessageBox.Show("Нельзя удалить болезнь, т.к. она указана у кого-то из пациентов.", "Ошибка");
-            }
-        }
+        //private void removeDisease(object param)
+        //{
+        //    try
+        //    {
+        //        diseaseService.Delete(param as Disease);
+        //        LoadData();
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Нельзя удалить болезнь, т.к. она указана у кого-то из пациентов.", "Ошибка");
+        //    }
+        //}
     }
 }

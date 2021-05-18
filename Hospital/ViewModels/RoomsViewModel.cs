@@ -1,20 +1,59 @@
-﻿using Hospital.Views.Dialogues;
+﻿using Model.Model;
 
 namespace Hospital.ViewModels
 {
-    class RoomsViewModel : BaseViewModel
+    class RoomsViewModel : BaseTabViewModel<Room>
     {
-        public RelayCommand EditRoomCommand { get; }
+        //private readonly ICRUD<Room> roomsService;
 
-        public RoomsViewModel()
-        {
-            EditRoomCommand = new RelayCommand(editRoom);
-        }
+        //private ObservableCollection<Room> rooms;
+        //public ObservableCollection<Room> Rooms { get => rooms; set => SetProperty(ref rooms, value); }
+        //public Command EditCommand { get; }
+        //public Command AddCommand { get; }
+        //public Command RemoveCommand { get; }
 
-        private void editRoom(object param)
-        {
-            var dialog = new EditRoomDialogue();
-            dialog.ShowDialog();
-        }
+        //public RoomsViewModel()
+        //{
+        //    EditCommand = new Command(editRoom);
+        //    AddCommand = new Command(addRoom);
+        //    RemoveCommand = new Command(removeRoom);
+
+        //    roomsService = ServiceProvider.Instance.GetRequiredService<ICRUD<Room>>();
+
+        //    LoadData();
+        //}
+
+        //private void LoadData()
+        //{
+        //    Rooms = new ObservableCollection<Room>(roomsService.Read());
+        //}
+
+        //private void addRoom(object obj)
+        //{
+        //    var dialog = new EditRoomDialogue();
+        //    dialog.ShowDialog();
+        //    LoadData();
+        //}
+
+        //private void editRoom(object param)
+        //{
+        //    var dialog = new EditRoomDialogue();
+        //    dialog.SetEntity(param as Room);
+        //    dialog.ShowDialog();
+        //    LoadData();
+        //}
+
+        //private void removeRoom(object param)
+        //{
+        //    try
+        //    {
+        //        roomsService.Delete(param as Room);
+        //        LoadData();
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Нельзя удалить палату, т.к. к ней относятся пациенты.", "Ошибка");
+        //    }
+        //}
     }
 }

@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0">Список болезней:</Label>
-        <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Diseases}">
+        <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Entities}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название" Width="200"/>

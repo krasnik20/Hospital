@@ -2,12 +2,14 @@
 
 namespace Model.Model
 {
-    public class Doctor
+    public class Doctor : Entity
     {
-        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        [Required]
+        public string Speciality { get; set; }
+        public override string ToString() => $"{FirstName} {LastName} ({Speciality})";
     }
 }

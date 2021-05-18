@@ -3,13 +3,13 @@ using System.Windows.Input;
 
 namespace Hospital.ViewModels
 {
-    public class RelayCommand : ICommand
+    public class Command : ICommand
     {
         private Action<object> execute;
 
         public event EventHandler CanExecuteChanged;
 
-        public RelayCommand(Action<object> execute)
+        public Command(Action<object> execute)
         {
             this.execute = execute;
         }

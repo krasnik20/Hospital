@@ -1,26 +1,26 @@
 ﻿<Window x:Class="Hospital.Views.Dialogues.EditTreatmentDialogue"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hospital.Views.Dialogues" xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
+        xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
-        Title="Редактирования назначенного лечения" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
+        Title="Назначение лечения" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
     <Window.DataContext>
         <viewmodels:EditTreatmentViewModel/>
     </Window.DataContext>
-    
-    <StackPanel Margin="20,0,20,20">
-        <Label>Препарат:</Label>
-        <ComboBox/>
-        <Label>Продолжительность приёма:</Label>
+
+    <StackPanel Margin="20,0">
+        <Label>Услуга:</Label>
+        <ComboBox ItemsSource="{Binding AvailableCures}" SelectedValue="{Binding SelectedCure}" Text="Выберите услугу" IsEditable="True" IsReadOnly="True"/>
+        <Label>Продолжительность (в днях) или количество сеансов:</Label>
         <TextBox Text="{Binding CurrentCureRecord.Duration}"/>
         <Label>Инструкция:</Label>
-        <TextBox Text="{Binding CurrentCureRecord.Instructions}"/>
+        <TextBox Text="{Binding CurrentCureRecord.Instructions}" Height="100" TextWrapping="Wrap"/>
         
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="20">
-            <Button Width="100">Сохранить</Button>
-            <Button Margin="20,0,0,0" Width="100">Отмена</Button>
+            <Button Width="100" Command="{Binding SaveCureCommand}">Сохранить</Button>
+            <Button Margin="20,0,0,0" Width="100" Click="CancelButton_Click">Отмена</Button>
         </StackPanel>
     </StackPanel>
 </Window>

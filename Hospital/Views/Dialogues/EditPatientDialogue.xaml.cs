@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace Hospital.Views.Dialogues
 {
-    public partial class EditPatientDialogue : Window
+    public partial class EditPatientDialogue : Window, IEditDialog<Patient>
     {
         public EditPatientDialogue()
         {
@@ -12,9 +12,9 @@ namespace Hospital.Views.Dialogues
             (DataContext as EditPatientViewModel).OnCommandPerformed += () => Close();
         }
 
-        public void SetPatient(Patient patient)
+        public void SetEntity(Patient entity)
         {
-            (DataContext as EditPatientViewModel).CurrentPatient = patient;
+            (DataContext as EditPatientViewModel).CurrentPatient = entity;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

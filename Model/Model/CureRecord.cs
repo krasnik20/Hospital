@@ -1,16 +1,18 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Model
 {
-    public class CureRecord
+    public class CureRecord : Entity
     {
-        public int Id { get; set; }
         [Required]
         public Cure Cure { get; set; }
-        public TimeSpan Duration { get; set; }
+        [Required]
+        public int? Duration { get; set; }
         public string Instructions { get; set; }
         [Required]
         public Patient Patient { get; set; }
+        [NotMapped]
+        public int Cost { get => Cure?.Price * Duration ?? 0; }
     }
 }

@@ -4,17 +4,17 @@ using System.Windows;
 
 namespace Hospital.Views.Dialogues
 {
-    public partial class EditCureDialogue : Window, IEditDialog<Cure>
+    public partial class EditDoctorDialogue : Window, IEditDialog<Doctor>
     {
-        public EditCureDialogue()
+        public EditDoctorDialogue()
         {
             InitializeComponent();
-            (DataContext as EditCureViewModel).OnCommandPerformed += () => Close();
+            (DataContext as EditDoctorViewModel).OnCommandPerformed += () => Close();
         }
 
-        public void SetEntity(Cure entity)
+        public void SetEntity(Doctor entity)
         {
-            (DataContext as EditCureViewModel).CurrentCure = entity;
+            (DataContext as EditDoctorViewModel).CurrentDoctor = entity;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
