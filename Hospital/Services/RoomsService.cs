@@ -8,21 +8,19 @@ namespace Hospital.Services
     {
         public RoomsService()
         {
-            Action<Room> CheckNumber = (Room item) =>
+            Action<Room> checkNumber = (Room item) =>
             {
                 if(item.Number <= 0 || dbctx.Set<Room>().Any(r => r.Id != item.Id && r.Number == item.Number))
                     throw new Exception();
             };
 
-            BeforeUpdate += CheckNumber;
-            BeforeCreate += CheckNumber;
+            BeforeUpdate += checkNumber;
+            BeforeCreate += checkNumber;
 
             AfterRead += (Room[] items) =>
             {
                 foreach (var item in items)
-                {
                     dbctx.Entry(item).Reference(i => i.Doctor).Load();
-                }
             };
         }
     }

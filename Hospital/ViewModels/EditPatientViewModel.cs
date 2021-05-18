@@ -46,7 +46,7 @@ namespace Hospital.ViewModels
             diseaseService = ServiceProvider.Instance.GetRequiredService<ICRUD<Disease>>();
             patientService = ServiceProvider.Instance.GetRequiredService<ICRUD<Patient>>();
 
-            CurrentPatient = new Patient() { Diseases = new List<PatientDisease>(), Treatment = new List<CureRecord>() };
+            CurrentPatient = new Patient { Diseases = new List<PatientDisease>(), Treatment = new List<CureRecord>() };
 
             AvailableRooms = ServiceProvider.Instance.GetRequiredService<ICRUD<Room>>().Read();
             AddTreatmentCommand = new Command(addTreatment);
@@ -124,7 +124,6 @@ namespace Hospital.ViewModels
             try
             {
                 CurrentPatient.Diseases = SelectedDiseases.ToList();
-                CurrentPatient.Treatment = Treatment.ToList();
                 CurrentPatient.Room = SelectedRoom;
 
                 if (CurrentPatient.Id == 0)

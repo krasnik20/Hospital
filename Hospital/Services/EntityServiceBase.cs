@@ -28,17 +28,19 @@ namespace Hospital.Services
             dbctx.SaveChanges();
         }
 
-        public T[] Read(Func<T, bool> Filter)
+        public T[] Read(Func<T, bool> Filters = null)
         {
             dbctx = new ApplicationContext();
 
             IEnumerable<T> query = dbctx.Set<T>();
 
-            if (Filter != null)
-                query = query.Where(Filter);
+            if (Filters != null)
+                query = query.Where(Filters);
 
             var items = query.ToArray();
+
             AfterRead?.Invoke(items);
+
             return items;
         }
 

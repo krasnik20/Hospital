@@ -5,8 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodels="clr-namespace:Hospital.ViewModels"
              mc:Ignorable="d" 
-             x:Name="CurrentTab"
-             d:DesignHeight="450" d:DesignWidth="800">
+             x:Name="CurrentTab">
     <UserControl.DataContext>
         <viewmodels:DiseasesViewModel/>
     </UserControl.DataContext>

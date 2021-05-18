@@ -33,7 +33,7 @@ namespace Hospital.Services
                 dbctx.CureRecords.RemoveRange(dbctx.CureRecords.Where(t => t.Patient.Id == item.Id && !item.Treatment.Select(pd => pd.Cure.Id).Contains(t.Cure.Id)));
             };
 
-            Action<Patient> CheckDataAccuracy = (Patient item) =>
+            Action<Patient> checkDataAccuracy = (Patient item) =>
             {
                 if (item.Treatment != null && item.Treatment.Count != 0 && item.Treatment.Any(c => c.Duration < 1))
                     throw new Exception();
@@ -41,11 +41,11 @@ namespace Hospital.Services
                     throw new Exception();
             };
 
-            BeforeCreate += CheckDataAccuracy;
+            BeforeCreate += checkDataAccuracy;
             BeforeCreate += configureDiseases;
             BeforeCreate += configureTreatment;
 
-            BeforeUpdate += CheckDataAccuracy;
+            BeforeUpdate += checkDataAccuracy;
             BeforeUpdate += configureDiseases;
             BeforeUpdate += configureTreatment;
         }

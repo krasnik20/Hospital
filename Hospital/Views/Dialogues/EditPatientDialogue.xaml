@@ -17,7 +17,7 @@
         <Label>Фамилия:</Label>
         <TextBox Text="{Binding CurrentPatient.LastName}"/>
         <Label>Анамнез:</Label>
-        <TextBox Text="{Binding CurrentPatient.Anamnesis}"/>
+        <TextBox Text="{Binding CurrentPatient.Anamnesis}" Height="100" TextWrapping="Wrap"/>
         <Label>Диагнозы:</Label>
         <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding SelectedDiseases}" MaxHeight="200">
             <ListView.Style>
@@ -53,7 +53,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <ComboBox ItemsSource="{Binding AvailableDiseases}" SelectedValue="{Binding SelectedDisease}" Text="Выберите болезнь" IsEditable="True" IsReadOnly="True"/>
-            <Button Grid.Column="1" Command="{Binding AddDiseaseCommand}">Добавить</Button>
+            <Button Grid.Column="2" Command="{Binding AddDiseaseCommand}">Добавить</Button>
         </Grid>
         <Label>Дата поступления:</Label>
         <DatePicker SelectedDate="{Binding CurrentPatient.ArrivalDate}"/>
@@ -62,7 +62,7 @@
         <Label>Палата:</Label>
         <ComboBox ItemsSource="{Binding AvailableRooms}" SelectedValue="{Binding SelectedRoom}" Text="Выберите палату" IsEditable="True" IsReadOnly="True"/>
         <Label>Лечение:</Label>
-        <ListView Grid.Row="1" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Treatment}" MaxHeight="200">
+        <ListView ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Treatment}" MaxHeight="200">
             <ListView.Style>
                 <Style TargetType="ListView">
                     <Style.Triggers>
@@ -76,7 +76,7 @@
                 <GridView>
                     <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Cure.Name}"/>
                     <GridViewColumn Header="Продолжительность" DisplayMemberBinding="{Binding Duration}"/>
-                    <GridViewColumn Header="Стоимость" DisplayMemberBinding="{Binding Cost}"/>
+                    <GridViewColumn Header="Стоимость" DisplayMemberBinding="{Binding Cost, StringFormat={}{0} руб.}"/>
                     <GridViewColumn Width="72">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

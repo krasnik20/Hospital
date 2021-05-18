@@ -14,7 +14,6 @@ namespace Hospital.Services
         public DbSet<PatientDisease> PatientDiseases { get; set; }
         public ApplicationContext()
         {
-            //Database. EnsureDeleted();
             Database.EnsureCreated();
         }
 

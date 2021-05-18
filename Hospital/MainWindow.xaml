@@ -6,33 +6,21 @@
         xmlns:views="clr-namespace:Hospital.Views"
         mc:Ignorable="d"
         Title="Больница" Height="450" Width="800">
-    <Grid>
-        <TabControl HorizontalAlignment="Stretch">
-            <TabItem Header="Пациенты">
-                <TabItem.Content>
-                    <views:PatientsTab/>
-                </TabItem.Content>
-            </TabItem>
-            <TabItem Header="Услуги">
-                <TabItem.Content>
-                    <views:CuresTab/>
-                </TabItem.Content>
-            </TabItem>
-            <TabItem Header="Палаты">
-                <TabItem.Content>
-                    <views:RoomsTab/>
-                </TabItem.Content>
-            </TabItem>
-            <TabItem Header="Болезни">
-                <TabItem.Content>
-                    <views:DiseasesTab/>
-                </TabItem.Content>
-            </TabItem>
-            <TabItem Header="Доктора">
-                <TabItem.Content>
-                    <views:DoctorsTab/>
-                </TabItem.Content>
-            </TabItem>
-        </TabControl>
-    </Grid>
+    <TabControl HorizontalAlignment="Stretch">
+        <TabItem Header="Пациенты">
+            <views:PatientsTab/>
+        </TabItem>
+        <TabItem Header="Услуги">
+            <views:CuresTab/>
+        </TabItem>
+        <TabItem Header="Палаты">
+            <views:RoomsTab/>
+        </TabItem>
+        <TabItem Header="Болезни">
+            <views:DiseasesTab/>
+        </TabItem>
+        <TabItem Header="Доктора">
+            <views:DoctorsTab/>
+        </TabItem>
+    </TabControl>
 </Window>
